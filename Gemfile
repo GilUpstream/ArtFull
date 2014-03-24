@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 1.2'
 # Authentication for users to sign up and log in
 gem 'devise'
 
+# Prettier rails console layouts
+gem 'hirb'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
