@@ -1,12 +1,9 @@
 ArtFull::Application.routes.draw do
-  get "locations/index"
-  get "locations/new"
-  get "locations/show"
-  get "pieces/index"
-  get "pieces/new"
-  get "pieces/show"
-  devise_for :users
   root 'users#index'
+  resources :check_ins
+  resources :locations
+  resources :pieces
+  devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

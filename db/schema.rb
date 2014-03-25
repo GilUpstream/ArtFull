@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20140325202106) do
   add_index "check_ins", ["piece_id"], name: "index_check_ins_on_piece_id"
   add_index "check_ins", ["user_id"], name: "index_check_ins_on_user_id"
 
+  create_table "checkins", id: false, force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "piece_id",   null: false
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "locations", force: true do |t|
     t.string   "name"
     t.string   "street"

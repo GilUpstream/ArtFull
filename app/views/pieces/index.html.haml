@@ -1,2 +1,5 @@
-%h1 Pieces#index
-%p Find me in app/views/pieces/index.html.haml
+%h1 Pieces Near You
+- @pieces.each do |p|
+  = p.title
+  %br
+  = p.artist
