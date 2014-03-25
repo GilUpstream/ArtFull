@@ -11,15 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325200919) do
+ActiveRecord::Schema.define(version: 20140325202106) do
 
-  create_table "checkins", id: false, force: true do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "piece_id",   null: false
-    t.string   "note"
+  create_table "check_ins", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "piece_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "note"
   end
+
+  add_index "check_ins", ["piece_id"], name: "index_check_ins_on_piece_id"
+  add_index "check_ins", ["user_id"], name: "index_check_ins_on_user_id"
 
   create_table "locations", force: true do |t|
     t.string   "name"
