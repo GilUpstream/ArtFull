@@ -48,18 +48,19 @@
         %a{href: "#"} Link
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          Dropdown
+          My Account
           %b.caret
         %ul.dropdown-menu
-          %li
-            %a{href: "#"} Action
-          %li
-            %a{href: "#"} Another action
-          %li
-            %a{href: "#"} Something else here
-          %li.divider
-          %li
-            %a{href: "#"} Separated link
+          - if user_signed_in?
+            %li
+              = link_to 'Sign out', destroy_user_session_path, method: :delete
+            %li
+              = link_to 'Edit Profile', edit_user_registration_path
+          - else
+            %li
+              = link_to "Sign in", new_user_session_path
+            %li
+              = link_to "Sign up", new_user_registration_path
   / /.navbar-collapse
 / /.container-fluid
 
