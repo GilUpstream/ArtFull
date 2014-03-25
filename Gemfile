@@ -9,6 +9,9 @@ gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+# Use Bootstrap to make things beautiful
+gem 'bootstrap-sass'
+
 # Use HAML in CSS
 gem 'haml-rails'
 
