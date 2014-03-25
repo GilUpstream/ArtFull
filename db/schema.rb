@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324214540) do
+ActiveRecord::Schema.define(version: 20140325195121) do
+
+  create_table "locations", force: true do |t|
+    t.string   "name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pieces", force: true do |t|
+    t.string   "title"
+    t.string   "artist"
+    t.string   "type"
+    t.string   "time_period"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "fname"
