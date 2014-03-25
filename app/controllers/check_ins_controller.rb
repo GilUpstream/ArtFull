@@ -3,6 +3,7 @@ class CheckInsController < ApplicationController
   end
 
   def new
+    @check_in = CheckIn.new
   end
 
   def show

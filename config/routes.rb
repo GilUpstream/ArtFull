@@ -1,8 +1,9 @@
 ArtFull::Application.routes.draw do
   root 'users#index'
-  resources :check_ins
   resources :locations
-  resources :pieces
+  resources :pieces do
+    resources :check_ins
+  end
   devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.

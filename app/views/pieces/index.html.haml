@@ -1,5 +1,12 @@
 %h1 Pieces Near You
 - @pieces.each do |p|
-  = p.title
-  %br
-  = p.artist
+  .piece-container{"data-id" => p.id}
+    = p.title
+    %br
+    = p.artist
+    %br
+    %a.btn.btn-default.btn-xs{:href => new_piece_check_in_path(p)}
+      %span.glyphicon.glyphicon-ok
+      Check in
+    %br
+    %br
