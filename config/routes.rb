@@ -1,4 +1,10 @@
 ArtFull::Application.routes.draw do
+  get "locations/index"
+  get "locations/new"
+  get "locations/show"
+  get "pieces/index"
+  get "pieces/new"
+  get "pieces/show"
   devise_for :users
   root 'users#index'
 
