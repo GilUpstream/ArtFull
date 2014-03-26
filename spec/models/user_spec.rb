@@ -2,18 +2,21 @@ require 'spec_helper'
 
 describe User do
 
-  #create test user using randomuser.me
+  #create test users using randomuser.me
   before { @user = User.new(fname: "Constance", lname:"Castillo", username:"silverSwan", favorite_piece:"Leda and the Swan", email: "constance.castillo76@example.com", password: "foobarfoo") }
+  before { @other_user = User.new(fname: "Stanley", lname:"Bryant", username:"heavyRabbit", favorite_piece:"Rabbit by Famous When Dead", email: "stanley.bryant73@example.com", password: "foobarfoo") }
 
-  subject { @user }
+  describe '#initialize' do
 
-  it { should respond_to(:fname) }
-  it { should respond_to(:lname) }
-  it { should respond_to(:username) }
-  it { should respond_to(:favorite_piece) }
-  it { should respond_to(:email) }
+    subject { @user }
 
-  it { should be_valid }
+    it { should respond_to(:fname) }
+    it { should respond_to(:lname) }
+    it { should respond_to(:username) }
+    it { should respond_to(:favorite_piece) }
+    it { should respond_to(:email) }
+    it { should be_valid }
+  end
 
   describe "when first name is not present" do
     before { @user.fname = " " }
@@ -24,8 +27,6 @@ describe User do
     before { @user.lname = " " }
     it { should_not be_valid }
   end
-
-
 
   describe "when first name is too long" do
     before { @user.fname = "z" * 26 }
@@ -91,5 +92,40 @@ describe User do
     before { @user.password = @user.password_confirmation = "a" * 5 }
     it { should be_invalid }
   end
+
+  describe "#follow!" do
+    before { @user.follow!(@other_user)}
+
+    it "will add other_user to followed_users" do
+      expect(@user.followed_users).to include(@other_user)
+    end
+  end
+
+  describe "#unfollow!" do
+    before { @user.follow!(@other_user) }
+    before { @user.unfollow!(@other_user) }
+
+    it "will remove other_user from followed_users" do
+      expect(@user.followed_users).not_to include(@other_user)
+    end
+  end
+
+  describe "#following?" do
+    context "when a user is following other_user" do
+      before { @user.follow!(@other_user) }
+
+      it "should return true" do
+        expect(@user.following?(@other_user)).to be_true
+      end
+    end
+
+    context "when a user is not following other_user" do
+
+      it "should return true" do
+        expect(@user.following?(@other_user)).to be_false
+      end
+    end
+  end
+
 
 end
