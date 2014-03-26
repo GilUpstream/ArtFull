@@ -94,6 +94,8 @@ describe User do
   end
 
   describe "#follow!" do
+    before { @user.save }
+    before { @other_user.save }
     before { @user.follow!(@other_user)}
 
     it "will add other_user to followed_users" do
@@ -102,6 +104,8 @@ describe User do
   end
 
   describe "#unfollow!" do
+    before { @user.save }
+    before { @other_user.save }
     before { @user.follow!(@other_user) }
     before { @user.unfollow!(@other_user) }
 
@@ -112,6 +116,8 @@ describe User do
 
   describe "#following?" do
     context "when a user is following other_user" do
+      before { @user.save }
+      before { @other_user.save }
       before { @user.follow!(@other_user) }
 
       it "should return true" do
