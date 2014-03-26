@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325202106) do
+ActiveRecord::Schema.define(version: 20140326010940) do
 
   create_table "check_ins", force: true do |t|
     t.integer  "user_id"
@@ -38,15 +38,15 @@ ActiveRecord::Schema.define(version: 20140325202106) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.string   "type"
+    t.string   "space"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "pieces", force: true do |t|
-    t.string   "title"
-    t.string   "artist"
-    t.string   "type"
+    t.string   "title",       default: "Title Unknown"
+    t.string   "maker",       default: "Maker Unknown"
+    t.string   "stuff"
     t.string   "time_period"
     t.datetime "created_at"
     t.datetime "updated_at"

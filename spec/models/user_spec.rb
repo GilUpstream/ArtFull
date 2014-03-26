@@ -25,10 +25,7 @@ describe User do
     it { should_not be_valid }
   end
 
-  describe "when email is not present" do
-    before { @user.email = " " }
-    it { should_not be_valid }
-  end
+
 
   describe "when first name is too long" do
     before { @user.fname = "z" * 26 }
@@ -37,6 +34,11 @@ describe User do
 
   describe "when last name is too long" do
     before { @user.lname = "z" * 26 }
+    it { should_not be_valid }
+  end
+
+  describe "when email is not present" do
+    before { @user.email = " " }
     it { should_not be_valid }
   end
 

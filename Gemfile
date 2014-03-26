@@ -36,6 +36,9 @@ gem 'devise'
 # Prettier rails console layouts
 gem 'hirb'
 
+# Capybara is an integration testing tool for rack based web applications. It simulates how a user would interact with a website
+gem 'capybara'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -43,6 +46,9 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+
+  #causes rails console to open pry
+  gem 'pry-rails'
 end
 
 # Use ActiveModel has_secure_password
