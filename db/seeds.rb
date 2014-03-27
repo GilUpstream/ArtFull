@@ -35,7 +35,52 @@ Piece.create(title: 'WOMAN WITH LONG HAIR',
             maker: 'Maker Unknown',
             stuff: 'Terracotta',
             time_period: '580 BC')
+
 Piece.create(title: 'THE GATES OF HELL',
             maker: 'Auguste Rodin',
             stuff: 'Bronze',
             time_period: '1900')
+
+User.create(fname: 'Kat',
+            lname: 'Be',
+            username: 'katbe',
+            favorite_piece: 'Abstract #19',
+            email: 'katbe@example.com',
+            password: 'foobarfoo'
+            )
+
+User.create(fname: 'Gil',
+            lname: 'Ad',
+            username: 'AdGil',
+            favorite_piece: 'Salmon Swimming',
+            email: 'AdGil@example.com',
+            password: 'foobarfoo')
+
+User.create(fname: 'Amanda',
+            lname: 'Ryan',
+            username: 'whiteMeercat',
+            favorite_piece: 'MEERKAT REVOLUTION',
+            email: 'amanda.ryan53@example.com',
+            password: 'foobarfoo')
+
+User.create(fname: 'Keith',
+            lname: 'Fisher',
+            username: 'orangeGorilla',
+            favorite_piece: 'Gorilla Statue at SurveyMonkey',
+            email: 'keith.fisher91@example.com',
+            password: 'foobarfoo')
+
+u = User.find(1)
+u.check_ins.create(piece_id: 1, note: "Love this bar!")
+
+u = User.find(2)
+u.check_ins.create(piece_id: 3, note: "The raven")
+
+u = User.find(3)
+u.check_ins.create(piece_id: 1, note: "She looks really sad :(")
+
+u = User.find(4)
+u.check_ins.create(piece_id: 1, note: "Meh")
+
+u = User.find(4)
+u.check_ins.create(piece_id: 4, note: "This piece is really cool")

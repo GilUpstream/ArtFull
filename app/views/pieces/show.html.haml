@@ -8,3 +8,11 @@
       |
       = @piece.time_period
 
+.check-ins-container
+  -@check_ins.each do |check_in|
+    .media
+      %a.pull-left{:href => piece_check_ins_path(check_in.piece_id)}
+        %img.media-object{:alt => "...", :src => "http://placekitten.com/50/50"}
+      .media-body
+        %h4.media-heading= @users.find(check_in.user_id).username
+        = check_in.note
