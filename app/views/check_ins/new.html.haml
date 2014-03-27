@@ -1,12 +1,14 @@
-.container-fluid
-  %h1 Checkin
-  = form_for [@piece, @check_in] do |f|
-    = @piece.title
-    = @piece.maker
-    %br
-    %br
-    = f.text_area :note
-    %br
-    %button.btn.btn-default.btn-primary.btn-lg.btn-block
-      %span.glyphicon.glyphicon-ok
-      Check In
+.col-xs-11
+  .container#checkin-container
+    %h1 Checkin
+    = form_for [@piece, @check_in] do |f|
+      = @piece.title
+      %br
+      = @piece.maker
+      %br
+      %br
+      = f.text_area :note
+      %br
+      %button.btn.btn-default.btn-primary.btn-lg.btn-block
+        %span.glyphicon.glyphicon-ok
+        Check In
