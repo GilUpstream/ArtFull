@@ -1,2 +1,5 @@
 %h1 CheckIns#index
-%p Find me in app/views/check_ins/index.html.haml
+- @check_ins.each do |check_in|
+  = check_in.note
+  %br
+

@@ -1,7 +1,10 @@
-%h1
-  = @piece.title
-%h4
-  = @piece.maker
+%img.thumbnail{:src => "http://placekitten.com/290/200"}
 
-
+.page-header
+  %h1
+    = @piece.title
+    %small
+      = @piece.maker
+      |
+      = @piece.time_period
 

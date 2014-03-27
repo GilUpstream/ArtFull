@@ -1,5 +1,6 @@
 class CheckInsController < ApplicationController
   def index
+    @check_ins = Piece.find(params[:piece_id]).check_ins
   end
 
   def new
