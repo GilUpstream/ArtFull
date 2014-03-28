@@ -11,6 +11,7 @@ class CheckInsController < ApplicationController
   def create
     @piece = Piece.find(params[:piece_id])
     @check_in = @piece.check_ins.new(check_in_params)
+    @check_in.user_id = current_user.id
 
     if @check_in.save
       redirect_to @piece
@@ -26,7 +27,7 @@ class CheckInsController < ApplicationController
 private
 
   def check_in_params
-    params.require(:check_in).permit(:note)
+    params.require(:check_in).permit(:note, :user_id, :piece_id)
   end
 
 
