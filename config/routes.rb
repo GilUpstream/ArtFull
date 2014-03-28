@@ -4,6 +4,7 @@ ArtFull::Application.routes.draw do
   resources :pieces do
     resources :check_ins
   end
+  resources :users
   devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.

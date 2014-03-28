@@ -1,11 +1,59 @@
+
 @import "bootstrap";
 
 body {
   background:image-url('brickwall/brickwall.png');
 }
 
+.navbar {
+  //Override Bootstrap bottom margin
+  margin-bottom: 0px;
+}
+
+.col-xs-4 {
+  padding: 0px;
+}
+
 .profile-header {
-  background: Cyan;
+  background: #71C3B9;
+  height: 300px;
+}
+
+.profile-grid-row {
+  margin-top: -50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.profile-grids {
+  height: 150px;
+  color: #D2CFD8;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#profile-grid-1 {
+  background: #DB816A;
+}
+
+#profile-grid-2 {
+  background: #9AB1DB;
+}
+
+#profile-grid-3 {
+  background: #A59981;
+}
+
+.glyphicon-user {
+  font-size: 32px;
+}
+
+.glyphicon-th-list {
+  font-size: 32px;
+}
+
+.glyphicon-bookmark {
+  font-size: 32px;
 }
 
 #checkin-container {
