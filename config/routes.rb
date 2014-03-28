@@ -1,11 +1,12 @@
 ArtFull::Application.routes.draw do
-  root 'users#index'
+  root 'pieces#index'
   resources :locations
   resources :pieces do
     resources :check_ins
   end
-  resources :users
+
   devise_for :users
+  get '/users/:id', to: 'users#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
