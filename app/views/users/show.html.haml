@@ -1,9 +1,10 @@
 .profile-header
-  = image_tag avatar_url_profile(current_user)
+  = image_tag avatar_url_profile(@user)
   %br
-  = current_user.username
+  %span#profile-username
+    = @user.username
   %br
-  = current_user.favorite_piece
+  = @user.favorite_piece
   %br
   = @user.check_ins.count
   Checkins
