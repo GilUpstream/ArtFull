@@ -9,10 +9,12 @@
       = @piece.time_period
 
 .check-ins-container
-  -@piece.check_ins.each do |check_in|
+  -@piece.check_ins.order(created_at: :desc).each do |check_in|
     .media
       %a.pull-left{:href => piece_check_ins_path(check_in.piece_id)}
-        %img.media-object{:alt => "...", :src => "http://placekitten.com/50/50"}
+        %img.media-object{:alt => "...", :src => "http://fillmurray.com/60/60"}
       .media-body
         %h4.media-heading= check_in.user.username
         = check_in.note
+        %br
+        = check_in.created_at.strftime("%B %d, %Y")
