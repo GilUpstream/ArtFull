@@ -10,4 +10,11 @@ module ApplicationHelper
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=120&d=identicon"
   end
 
+  def avatar_url_nav(user)
+    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=25&d=identicon"
+  end
+
+
+
 end

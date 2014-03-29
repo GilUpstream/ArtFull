@@ -44,21 +44,27 @@
             %input.form-control{:placeholder => "Search", :type => "text"}
           %button.btn.btn-default{:type => "submit"} Submit
         %ul.nav.navbar-nav.navbar-right
-          %li
-            %a{:href => "#"} Link
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              My Account
-              %b.caret
-            %ul.dropdown-menu
-              %li
-                %a{:href => "#"} Edit Profile
-              %li
-                %a{:href => "#"} Log out
-              %li
-                %a{:href => "#"} Sign in
-              %li
-                %a{:href => "#"} Sign up
+          - if user_signed_in?
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                = image_tag avatar_url_nav(current_user)
+                My Account
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to "Edit profile", edit_user_registration_path
+                %li
+                  = link_to "Log out", destroy_user_session_path, method: "delete"
+          - else
+            %li
+              = link_to "Log in", new_user_session_path
+            %li
+              = link_to "Sign up", new_user_registration_path
+
+
+
+
+
       / /.navbar-collapse
     / /.container-fluid
 
