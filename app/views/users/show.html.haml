@@ -1,4 +1,12 @@
 .profile-header
+  = image_tag avatar_url_profile(current_user)
+  %br
+  = current_user.username
+  %br
+  = current_user.favorite_piece
+  %br
+  = @user.check_ins.count
+  Checkins
 .container-fluid
   .row.profile-grid-row
     .col-xs-4
