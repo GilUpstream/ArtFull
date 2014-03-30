@@ -8,7 +8,8 @@
       - if !(current_user.following?(@user))
         = form_for(current_user.relationships.build(followed_id: @user.id), remote: true) do |f|
           %div= f.hidden_field :followed_id
-          = f.submit "Follow", class: "btn.btn-default.btn-primary.btn-sm"
+          #follow-button
+            = f.submit "Follow", class: "btn btn-default btn-primary btn-sm"
       - else
         %button.btn.btn-default.btn-success.btn-sm
           Following
