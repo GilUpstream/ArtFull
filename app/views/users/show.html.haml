@@ -1,13 +1,24 @@
 .profile-header
-  = image_tag avatar_url_profile(@user)
-  %br
-  %span#profile-username
-    = @user.username
-  %br
-  = @user.favorite_piece
-  %br
-  = @user.check_ins.count
-  Checkins
+  #user-profile
+    #profile-photo
+      %img
+        =image_tag avatar_url_profile(@user)
+    #profile-details
+      %span#profile-username= @user.fname + " " + @user.lname[0]
+      - if !(current_user.following?(@user))
+        = form_for(current_user.relationships.build(followed_id: @user.id), remote: true) do |f|
+          %div= f.hidden_field :followed_id
+          = f.submit "Follow", class: "btn.btn-default.btn-primary.btn-sm"
+      - else
+        %button.btn.btn-default.btn-success.btn-sm
+          Following
+      %br
+      %span.glyphicon.glyphicon-user
+      = @user.username
+      = @user.favorite_piece
+      %br
+      = @user.check_ins.count
+      Checkins
 .container-fluid
   .row.profile-grid-row
     .col-xs-4

@@ -4,6 +4,7 @@ ArtFull::Application.routes.draw do
   resources :pieces do
     resources :check_ins
   end
+  resources :relationships, only: [:create, :destroy]
 
   devise_for :users
   get '/users/:id', to: 'users#show'

@@ -39,6 +39,9 @@ gem 'hirb'
 # Capybara is an integration testing tool for rack based web applications. It simulates how a user would interact with a website
 gem 'capybara'
 
+# Font-awesome bundlef for asset pipeline for icons
+gem 'font-awesome-rails'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
