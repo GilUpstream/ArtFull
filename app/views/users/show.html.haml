@@ -11,8 +11,12 @@
           #follow-button
             = f.submit "Follow", class: "btn btn-default btn-primary btn-sm"
       - else
-        %button.btn.btn-default.btn-success.btn-sm
-          Following
+        #following-button
+          %button.btn.btn-default.btn-success.btn-sm
+            Following
+        = form_for(current_user.relationships.find_by(followed_id: @user.id), method: :delete, remote: true) do |f|
+          #unfollow-button
+            = f.submit "Unfollow", class: "btn btn-default btn-danger btn-sm"
       %br
       %span.glyphicon.glyphicon-user
       = @user.username
