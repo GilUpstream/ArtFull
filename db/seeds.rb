@@ -9,22 +9,26 @@
 Piece.create(title: 'A BAR AT THE FOLIES-BERGERE',
             maker: 'Edouard Manet',
             stuff: 'Oil and Canvas',
-            time_period: '1880s')
+            time_period: '1880s',
+            location_id: 1)
 
 Piece.create(title: 'SELF-PORTRAIT WITH BANDAGED EAR',
             maker: 'Vincent van Gogh',
             stuff: 'Oil and Canvas',
-            time_period: '1880s')
+            time_period: '1880s',
+            location_id: 1)
 
 Piece.create(title: 'NEVERMORE',
             maker: 'Paul Gauguin',
             stuff: 'Oil and Canvas',
-            time_period: '1890s')
+            time_period: '1890s',
+            location_id: 1)
 
 Piece.create(title: 'TWO DANCERS ON A STAGE',
             maker: 'Edgar Degas',
             stuff: 'Oil and Canvas',
-            time_period: '1870s')
+            time_period: '1870s',
+            location_id: 1)
 
 Piece.create(title: 'AUTUMN EFFECT AT ARGENTEUIL',
             maker: 'Claude Monet',
@@ -40,6 +44,13 @@ Piece.create(title: 'THE GATES OF HELL',
             maker: 'Auguste Rodin',
             stuff: 'Bronze',
             time_period: '1900')
+
+Location.create(name: 'The Courtauld Gallery',
+            street: 'Strand',
+            city: 'London',
+            state: 'United Kingdom',
+            zip: 'WC2R 0RN',
+            space: 'gallery')
 
 User.create(fname: 'Kat',
             lname: 'Be',

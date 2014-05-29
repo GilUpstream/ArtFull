@@ -1,2 +1,26 @@
-%h1 Locations#show
-%p Find me in app/views/locations/show.html.haml
+%img.thumbnail{:src => "http://placekitten.com/290/200"}
+
+.page-header
+  %h1
+    = @location.name
+    %small
+      = @location.space
+      |
+      = @location.city
+
+.container
+  -@location_pieces.each do |piece_id|
+    - piece = Piece.find(piece_id)
+    .media
+      %a.pull-left{:href => piece_path(piece_id)}
+        %img.media-object{:alt => "...", :src => "http://fillmurray.com/60/60"}
+      .media-body
+        %h4.media-heading= piece.title
+        maker:
+        = piece.maker
+        %br
+        materials used:
+        = piece.stuff
+        %br
+        time period:
+        = piece.time_period
