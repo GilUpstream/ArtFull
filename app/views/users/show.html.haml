@@ -1,10 +1,10 @@
 .profile-header
-  #user-profile
-    #profile-photo
+  .row.row-centered
+    .col-xs-6.col-centered
       %img
         =image_tag avatar_url_profile(@user)
-    #profile-details
-      %span#profile-username= @user.fname + " " + @user.lname[0]
+      %br
+      %span#profile-username= @user.username
       - if @user.id != current_user.id
         - if !(current_user.following?(@user))
           = form_for(current_user.relationships.build(followed_id: @user.id), remote: true) do |f|
@@ -18,13 +18,12 @@
           = form_for(current_user.relationships.find_by(followed_id: @user.id), method: :delete, remote: true) do |f|
             #unfollow-button
               = f.submit "Unfollow", class: "btn btn-default btn-danger btn-sm"
-      %br
-      %span.glyphicon.glyphicon-user
-      = @user.username
-      = @user.favorite_piece
-      %br
-      = @user.check_ins.count
-      Checkins
+      %h4
+        Favorite Piece:
+        = @user.favorite_piece
+      %h4
+        = @user.check_ins.count
+        Checkins
 .container-fluid
   .row.profile-grid-row
     .col-xs-4
@@ -42,7 +41,8 @@
 .container-fluid
   .row
     .col-xs-6
-      %h2 My Checkins
+      %h2
+        = @user.fname + "'s Checkins"
       -@user.check_ins.order(created_at: :desc).each do |check_in|
         .media
           %a.pull-left{:href => piece_check_ins_path(check_in.piece_id)}

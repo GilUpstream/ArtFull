@@ -14,11 +14,22 @@ body {
   padding: 0px;
 }
 
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:center;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
 .profile-header {
   background: #71C3B9;
-  height: 300px;
-  text-align: center;
-  padding-top: 10px;
+  min-height: 320px;
+  padding-top: 20px;
 }
 
 #profile-username {
@@ -33,7 +44,7 @@ body {
 }
 
 .profile-grids {
-  height: 150px;
+  height: 120px;
   color: #D2CFD8;
   text-align: center;
   padding-top: 20px;
