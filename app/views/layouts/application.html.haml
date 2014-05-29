@@ -22,7 +22,9 @@
             %li
               %a{:href => "/users/" + current_user.id.to_s} Main Feed
           %li
-            %a{:href => "#"} Pieces Nearby
+            %a{:href => pieces_path} Pieces Nearby
+          %li
+            %a{:href => locations_path} Locations Nearby
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in?
             %li.dropdown
