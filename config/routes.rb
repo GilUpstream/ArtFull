@@ -1,6 +1,9 @@
 ArtFull::Application.routes.draw do
   root 'pieces#index'
-  resources :locations
+  resources :locations do
+    resources :pieces
+  end
+
   resources :pieces do
     resources :check_ins
   end
