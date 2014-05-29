@@ -18,8 +18,9 @@
       / Collect the nav links, forms, and other content for toggling
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         %ul.nav.navbar-nav
-          %li
-            %a{:href => "#"} Main Feed
+          - if user_signed_in?
+            %li
+              %a{:href => "/users/" + current_user.id.to_s} Main Feed
           %li
             %a{:href => "#"} Pieces Nearby
         %ul.nav.navbar-nav.navbar-right

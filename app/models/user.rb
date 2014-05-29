@@ -31,6 +31,22 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
 
+  def followed_checkins
+    followed_user_checkins = []
+    self.relationships.each do |relationship|
+      followed_user = User.find(relationship.followed_id)
+      followed_user.check_ins.each do |check_in|
+        followed_user_checkins.push(check_in)
+      end
+    end
+    followed_user_checkins.sort.reverse
+  end
+
   def gravatar_path
   end
 end
+
+
+
+
+
