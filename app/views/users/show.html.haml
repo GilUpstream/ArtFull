@@ -23,7 +23,10 @@
         = @user.favorite_piece
       %h4
         = @user.check_ins.count
-        Checkins
+        - if @user.check_ins.count > 1
+          Checkins
+        - else
+          Checkin
 .container-fluid
   .row.profile-grid-row
     .col-xs-4
@@ -45,7 +48,7 @@
         = @user.fname + "'s Checkins"
       -@user.check_ins.order(created_at: :desc).each do |check_in|
         .media
-          %a.pull-left{:href => piece_check_ins_path(check_in.piece_id)}
+          %a.pull-left{:href => piece_path(check_in.piece_id)}
             %img.media-object{:alt => "...", :src => "http://fillmurray.com/60/60"}
           .media-body
             %h4.media-heading= check_in.piece.title
@@ -55,17 +58,18 @@
             = @user.username
             on
             = check_in.created_at.strftime("%B %d, %Y")
-    .col-xs-6
-      %h2 Friends' Checkins
-      -@followed_user_checkins.each do |check_in|
-        .media
-          %a.pull-left{:href => piece_check_ins_path(check_in.piece_id)}
-            %img.media-object{:alt => "...", :src => "http://fillmurray.com/60/60"}
-          .media-body
-            %h4.media-heading= check_in.piece.title
-            = check_in.note
-            %br
-            added by
-            = User.find(check_in.user).username
-            on
-            = check_in.created_at.strftime("%B %d, %Y")
+    - if @followed_user_checkins.length != 0
+      .col-xs-6
+        %h2 Friends' Checkins
+        -@followed_user_checkins.each do |check_in|
+          .media
+            %a.pull-left{:href => piece_path(check_in.piece_id)}
+              %img.media-object{:alt => "...", :src => "http://fillmurray.com/60/60"}
+            .media-body
+              %h4.media-heading= check_in.piece.title
+              = check_in.note
+              %br
+              added by
+              %a{:href => "/users/" + (User.find(check_in.user).id).to_s}= User.find(check_in.user).username
+              on
+              = check_in.created_at.strftime("%B %d, %Y")

@@ -1,18 +1,23 @@
-%h1 stuff near ya
-.row
-  - @pieces.each do |p|
-    .col-xs-11.col-sm-4.col-lg-3
-      .piece-container{"data-id" => p.id}
-        .thumbnail
-          %img{"src" => "http://placekitten.com/290/200"}
-            .caption
-              %h3
-                = p.title
-              %p
-                = p.maker
-              %p
-                %a.btn.btn-primary.btn-md{:href => new_piece_check_in_path(p), :role => "button"}
-                  %span.glyphicon.glyphicon-ok
-                  Check in
-                %br
-                %br
+%h2 Pieces Nearby
+.container-fluid
+  .row
+    - i = 0
+    - @pieces.each do |p|
+      - if i % 3 == 0
+        .row
+      - i += 1
+      .col-xs-4
+        .piece-container{"data-id" => p.id}
+          .thumbnail
+            %img{"src" => "http://placekitten.com/290/200"}
+              %a.caption{:href => piece_path(p.id)}
+                %h3
+                  = p.title
+                %p
+                  = p.maker
+                %p
+                  %a.btn.btn-primary.btn-md{:href => new_piece_check_in_path(p), :role => "button"}
+                    %span.glyphicon.glyphicon-ok
+                    Check in
+                  %br
+                  %br

@@ -1,2 +1,14 @@
-%h1 Locations#index
-%p Find me in app/views/locations/index.html.haml
+%h2 Locations Nearby
+.container.location-index
+  - @locations.each do |location|
+    .media
+      %a.pull-left{:href => location_path(location.id)}
+        %img.media-object{:alt => "...", :src => "http://fillmurray.com/60/60"}
+      .media-body
+        %h4.media-heading= location.name
+        space:
+        = location.space
+        %br
+        located in
+        = location.city + ","
+        = location.state

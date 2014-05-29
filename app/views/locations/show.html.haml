@@ -1,2 +1,37 @@
-%h1 Locations#show
-%p Find me in app/views/locations/show.html.haml
+.location-container
+  .row.row-centered
+    .col-xs-6.col-centered
+      %img.thumbnail{:src => "http://placekitten.com/290/200"}
+      %br
+      %a.btn.btn-primary.btn-md.new-piece-button{:href => new_location_piece_path(@location), :role => "button"}
+        %span.glyphicon.glyphicon-plus
+        Add New Piece to Location
+
+.page-header
+  %h1
+    = @location.name
+    %small
+      = @location.space
+      |
+      = @location.city + ","
+      = @location.state
+
+.container
+  -@location_pieces.each do |piece_id|
+    - piece = Piece.find(piece_id)
+    .media
+      %a.pull-left{:href => piece_path(piece_id)}
+        %img.media-object{:alt => "...", :src => "http://fillmurray.com/60/60"}
+      .media-body
+        %h4.media-heading= piece.title
+        maker:
+        = piece.maker
+        %br
+        materials used:
+        = piece.stuff
+        %br
+        time period:
+        = piece.time_period
+    %a.btn.btn-primary.btn-md{:href => new_piece_check_in_path(piece_id), :role => "button"}
+      %span.glyphicon.glyphicon-ok
+      Check in
