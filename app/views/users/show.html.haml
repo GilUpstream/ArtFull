@@ -5,18 +5,19 @@
         =image_tag avatar_url_profile(@user)
     #profile-details
       %span#profile-username= @user.fname + " " + @user.lname[0]
-      - if !(current_user.following?(@user))
-        = form_for(current_user.relationships.build(followed_id: @user.id), remote: true) do |f|
-          %div= f.hidden_field :followed_id
-          #follow-button
-            = f.submit "Follow", class: "btn btn-default btn-primary btn-sm"
-      - else
-        #following-button
-          %button.btn.btn-default.btn-success.btn-sm
-            Following
-        = form_for(current_user.relationships.find_by(followed_id: @user.id), method: :delete, remote: true) do |f|
-          #unfollow-button
-            = f.submit "Unfollow", class: "btn btn-default btn-danger btn-sm"
+      - if @user.id != current_user.id
+        - if !(current_user.following?(@user))
+          = form_for(current_user.relationships.build(followed_id: @user.id), remote: true) do |f|
+            %div= f.hidden_field :followed_id
+            #follow-button
+              = f.submit "Follow", class: "btn btn-default btn-primary btn-sm"
+        - else
+          #following-button
+            %button.btn.btn-default.btn-success.btn-sm
+              Following
+          = form_for(current_user.relationships.find_by(followed_id: @user.id), method: :delete, remote: true) do |f|
+            #unfollow-button
+              = f.submit "Unfollow", class: "btn btn-default btn-danger btn-sm"
       %br
       %span.glyphicon.glyphicon-user
       = @user.username
@@ -38,13 +39,33 @@
       .profile-grids#profile-grid-3
         %span.glyphicon.glyphicon-bookmark
         %h3 Badges
-  .check-ins-container
-  -@user.check_ins.order(created_at: :desc).each do |check_in|
-    .media
-      %a.pull-left{:href => piece_check_ins_path(check_in.piece_id)}
-        %img.media-object{:alt => "...", :src => "http://fillmurray.com/60/60"}
-      .media-body
-        %h4.media-heading= check_in.piece.title
-        = check_in.note
-        %br
-        = check_in.created_at.strftime("%B %d, %Y")
+.container-fluid
+  .row
+    .col-xs-6
+      %h2 My Checkins
+      -@user.check_ins.order(created_at: :desc).each do |check_in|
+        .media
+          %a.pull-left{:href => piece_check_ins_path(check_in.piece_id)}
+            %img.media-object{:alt => "...", :src => "http://fillmurray.com/60/60"}
+          .media-body
+            %h4.media-heading= check_in.piece.title
+            = check_in.note
+            %br
+            added by
+            = @user.username
+            on
+            = check_in.created_at.strftime("%B %d, %Y")
+    .col-xs-6
+      %h2 Friends' Checkins
+      -@followed_user_checkins.each do |check_in|
+        .media
+          %a.pull-left{:href => piece_check_ins_path(check_in.piece_id)}
+            %img.media-object{:alt => "...", :src => "http://fillmurray.com/60/60"}
+          .media-body
+            %h4.media-heading= check_in.piece.title
+            = check_in.note
+            %br
+            added by
+            = User.find(check_in.user).username
+            on
+            = check_in.created_at.strftime("%B %d, %Y")
