@@ -15,6 +15,9 @@ gem 'bootstrap-sass'
 # Use HAML in CSS
 gem 'haml-rails'
 
+# Use for badge system
+gem 'merit'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

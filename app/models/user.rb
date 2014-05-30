@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_merit
+
   validates :fname, presence: true, length: { minimum: 2, maximum: 25}, format: { with: /\A[a-zA-Z]+\z/, message: "How about giving us only letters..." }
   validates :lname, presence: true, length: { minimum: 2, maximum: 25 }, format: { with: /\A[a-zA-Z]+\z/, message: "How about giving us only letters..." }
   validates :username, presence: true, length: { minimum: 5 }, uniqueness: true
